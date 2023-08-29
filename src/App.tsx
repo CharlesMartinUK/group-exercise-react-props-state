@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import ChuckCard from './components/chuck_card';
 import ChuckInfo from './components/chuck_info';
+import ChuckJoke from './components/chuck_joke';
 import Joke from './joke';
 
 function App() {
@@ -26,19 +27,29 @@ function App() {
 		"joke": "Chuck Norris does not own a stove, oven, or microwave, because revenge is a dish best served cold.",
 	}])
 
+
+	function stuff()
+	{
+		return '<ChuckJoke id={1} joke={stuff()} />   <ChuckJoke id={1} joke={"still not funny"}  /></h2>'
+
+	}
+
+
 	return (
 		<div className="App">
 
 			<h1>React props and state</h1>
-			<ChuckCard />
+			<ChuckCard greeting={chuckGreeting} />
 
 			<h2>Chuck Info: </h2>
-			<ChuckInfo />
+			<ChuckInfo whalesSaved={whalesSaved} roundHouseKicks={roundHouseKicks} />
 
-			<h2>Jokes: </h2>
+			<h2>Jokes:  { jokes.map(j => {
+				return <ChuckJoke key={j.id} id={j.id} joke={j.joke} />
+			})   } </h2>
 
 		</div>
-	);
+	); //jokes.map(  id={jokes[0].id} jokes={jokes[0].joke})
 }
 
 export default App;
